@@ -1,2 +1,2 @@
 # MyProjects
-Projects made during university
+Projects made during university.
