@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Words xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Cars>
+    <string>VOLKSWAGEN</string>
+    <string>BMW</string>
+    <string>MERCEDES BENZ</string>
+    <string>AUDI</string>
+    <string>MAZDA</string>
+    <string>SKODA</string>
+    <string>RENAULT</string>
+    <string>OPEL</string>
+    <string>KIA</string>
+    <string>TOYOTA</string>
+    <string>VOLVO</string>
+    <string>PEUGEOT</string>
+    <string>MITSUBISHI</string>
+    <string>SUZUKI</string>
+    <string>HYUNDAI</string>
+    <string>NISSAN</string>
+    <string>PORCHE</string>
+  </Cars>
+  <Movies>
+    <string>BOYKA</string>
+    <string>VENOM</string>
+    <string>FINDING NEMO</string>
+    <string>SPIDERMAN NO WAY HOME</string>
+    <string>WONDER WOMAN</string>
+    <string>PEAKY BLINDERS</string>
+    <string>LUCIFER</string>
+    <string>JUMAJI</string>
+    <string>THE EQUALIZER</string>
+    <string>CITY OF BONES</string>
+    <string>JOHN WICK</string>
+    <string>UNCHARTED</string>
+    <string>EUPHORIA</string>
+    <string>BRIGHT</string>
+    <string>THE PURGE</string>
+    <string>PIRATES OF THE CARIBBEAN</string>
+  </Movies>
+  <Countries>
+    <string>CANADA</string>
+    <string>BRAZILIA</string>
+    <string>ALGERIA</string>
+    <string>ROMANIA</string>
+    <string>PORTUGALIA</string>
+    <string>PAKISTAN</string>
+    <string>BOTSWANA</string>
+    <string>KENYA</string>
+    <string>FRANTA</string>
+    <string>GERMANIA</string>
+    <string>NORVEGIA</string>
+    <string>GUATEMALA</string>
+    <string>SRI LANKA</string>
+    <string>BOSNIA SI HERTOGOVINA</string>
+    <string>SLOVACIA</string>
+    <string>SLOVENIA</string>
+    <string>LETONIA</string>
+    <string>LITUANIA</string>
+    <string>TARILE DE JOS</string>
+    <string>MACEDONIA DE NORD</string>
+  </Countries>
+  <Flowers>
+    <string>LALEAUA PESTRITA</string>
+    <string>BRANDUSA DE PRIMAVARA</string>
+    <string>MARGARITAR</string>
+    <string>BEGONIA</string>
+    <string>REGINA NOPTII</string>
+    <string>MARGARETA</string>
+    <string>PANSELUTA</string>
+    <string>MAGNOLIA</string>
+    <string>HORTENSIA</string>
+    <string>ORHIDEE</string>
+    <string>GLADIOLA</string>
+    <string>BRANDUSA DE MUNTE</string>
+    <string>ANEMONA</string>
+    <string>CAPRIFOI</string>
+    <string>ERANTHIS</string>
+    <string>CLEMATITA TETRAROSE</string>
+    <string>NARCISA</string>
+    <string>ZAMBILA STRUGURAS</string>
+    <string>GLICINA ALBA</string>
+    <string>TROIENE DE ZAPADA</string>
+    <string>CRIN TIGRAT</string>
+    <string>DALIA VULCAN</string>
+    <string>STEA STRALUCITOARE</string>
+  </Flowers>
+  <Animals>
+    <string>ARICI</string>
+    <string>BIBILICA</string>
+    <string>BIVOL</string>
+    <string>CAINE</string>
+    <string>CURCAN</string>
+    <string>EMU</string>
+    <string>FAZAN</string>
+    <string>LEBADA</string>
+    <string>GAINA JAPONEZA</string>
+    <string>PAPAGAL CACADU UMBRELAT ALB</string>
+    <string>PORCUSOR DE GUINEEA</string>
+    <string>VEVERITA</string>
+    <string>HARCIOG</string>
+    <string>DIHOR</string>
+    <string>PISICA SALBATICA</string>
+    <string>CHITCAN DE APA</string>
+    <string>ZIMBRU</string>
+    <string>CASTOR</string>
+    <string>VULPE</string>
+    <string>VEVERITA</string>
+    <string>COIOT</string>
+    <string>ANTILOPA KONGONI</string>
+    <string>PUFFIN</string>
+    <string>DIAVOLUL TAZMANIAN</string>
+  </Animals>
+</Words>

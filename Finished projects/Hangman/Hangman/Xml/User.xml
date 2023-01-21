@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<SignInViewModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <UsersList>
+    <UserModel>
+      <Name>Mi</Name>
+      <ImagePath>/Images/2.jpg</ImagePath>
+      <IsInGame>false</IsInGame>
+    </UserModel>
+    <UserModel>
+      <Name>Liv</Name>
+      <ImagePath>/Images/3.jpg</ImagePath>
+      <GameProperty>
+        <Level>1</Level>
+        <Word>*A*A*</Word>
+        <CategoryProp>AllCategories</CategoryProp>
+        <Seconds>25</Seconds>
+        <Mistakes>2</Mistakes>
+        <WordIndex>0</WordIndex>
+        <WordsCollection>
+          <string>FAZAN</string>
+          <string>THE EQUALIZER</string>
+          <string>LALEAUA PESTRITA</string>
+          <string>JOHN WICK</string>
+          <string>ERANTHIS</string>
+          <string>TARILE DE JOS</string>
+        </WordsCollection>
+        <ImagePath>/Images/mistakes2.jpg</ImagePath>
+      </GameProperty>
+      <IsInGame>true</IsInGame>
+    </UserModel>
+    <UserModel>
+      <Name>new2</Name>
+      <ImagePath>/Images/4.jpg</ImagePath>
+      <Stats>
+        <TotalWonGames>0</TotalWonGames>
+        <TotalLostGames>0</TotalLostGames>
+        <WonGamesOnAllCategories>0</WonGamesOnAllCategories>
+        <LostGamesOnAllCategories>0</LostGamesOnAllCategories>
+        <WonGamesOnCars>0</WonGamesOnCars>
+        <LostGamesOnCars>0</LostGamesOnCars>
+        <WonGamesOnMovies>0</WonGamesOnMovies>
+        <LostGamesOnMovies>0</LostGamesOnMovies>
+        <WonGamesOnCountries>0</WonGamesOnCountries>
+        <LostGamesOnCountries>0</LostGamesOnCountries>
+        <WonGamesOnFlowers>0</WonGamesOnFlowers>
+        <LostGamesOnFlowers>0</LostGamesOnFlowers>
+        <WonGamesOnAnimals>0</WonGamesOnAnimals>
+        <LostGamesOnAnimals>0</LostGamesOnAnimals>
+      </Stats>
+      <IsInGame>false</IsInGame>
+    </UserModel>
+    <UserModel>
+      <Name>iugiug</Name>
+      <ImagePath>/Images/5.jpg</ImagePath>
+      <Stats>
+        <TotalWonGames>0</TotalWonGames>
+        <TotalLostGames>0</TotalLostGames>
+        <WonGamesOnAllCategories>0</WonGamesOnAllCategories>
+        <LostGamesOnAllCategories>0</LostGamesOnAllCategories>
+        <WonGamesOnCars>0</WonGamesOnCars>
+        <LostGamesOnCars>0</LostGamesOnCars>
+        <WonGamesOnMovies>0</WonGamesOnMovies>
+        <LostGamesOnMovies>0</LostGamesOnMovies>
+        <WonGamesOnCountries>0</WonGamesOnCountries>
+        <LostGamesOnCountries>0</LostGamesOnCountries>
+        <WonGamesOnFlowers>0</WonGamesOnFlowers>
+        <LostGamesOnFlowers>0</LostGamesOnFlowers>
+        <WonGamesOnAnimals>0</WonGamesOnAnimals>
+        <LostGamesOnAnimals>0</LostGamesOnAnimals>
+      </Stats>
+      <IsInGame>false</IsInGame>
+    </UserModel>
+  </UsersList>
+</SignInViewModel>

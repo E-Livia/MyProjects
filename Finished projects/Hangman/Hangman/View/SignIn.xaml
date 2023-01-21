@@ -1,0 +1,56 @@
+﻿<Window x:Class="Hangman.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hangman"
+        xmlns:viewmodels="clr-namespace:Hangman.ViewModel"
+        mc:Ignorable="d"
+        Title="Sign In" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.DataContext>
+        <viewmodels:SignInViewModel/>
+    </Window.DataContext>
+    
+    <Grid Background="AntiqueWhite">
+        <StackPanel>
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/Images/wallpaper2.jpg"/>
+            </StackPanel.Background>
+            <Label Content="Welcome to Hangman!" VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" FontSize="25" 
+                   FontWeight="DemiBold"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="20,0">
+                    <Label Content="User List" HorizontalAlignment="Center" FontSize="20" Margin="80,0"/>
+                    <ListBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="240" 
+                             Margin="20,0" HorizontalContentAlignment="Center" SelectionMode="Single"
+                             ItemsSource="{Binding UsersList}" SelectedItem="{Binding SelectedUser}"
+                             FontSize="15">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="20,0" >
+                    <Label Content="User Picture" HorizontalAlignment="Right" FontSize="20" Margin="80,0"/>
+                    <Image Source="{Binding SelectedUser.ImagePath}" Height="200px" Width="200px" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10" Height="80">
+                <Button Content="New User" Margin="20" Width="100" Background="CadetBlue" Command="{Binding NewUserCommand}" 
+                        FontStyle="Italic" FontWeight="DemiBold"/>
+                <Button Content="Delete User" Margin="20" Width="100" Background="CadetBlue" Command="{Binding DeleteUserCommand}" 
+                        FontStyle="Italic" FontWeight="DemiBold"/>
+                <Button Content="Play" Margin="20" Width="100" Background="CadetBlue" Command="{Binding PlayCommand}" 
+                        FontStyle="Italic" FontWeight="DemiBold"/>
+                <Button Content="Cancel" Margin="20" Width="100" Background="CadetBlue" Command="{Binding CancelCommand}" 
+                        FontStyle="Italic" FontWeight="DemiBold"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

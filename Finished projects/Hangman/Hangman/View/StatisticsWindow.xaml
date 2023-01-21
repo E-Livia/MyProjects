@@ -1,0 +1,67 @@
+﻿<Window x:Class="Hangman.View.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hangman.View"
+        mc:Ignorable="d"
+        Title="Statistics Window" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="175*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="74*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="-72,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="117*"/>
+                <RowDefinition Height="44*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="31*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.RowSpan="2" HorizontalAlignment="Right" Width="253" Visibility="Visible" Grid.ColumnSpan="2"/>
+            <!--<Label Grid.Column="0" Content="USER" FontFamily="Comic Sans MS" FontSize="20" HorizontalAlignment="Right" Width="145" Margin="0,10,390,83" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>-->
+            <Label Grid.Column="0" FontFamily="Comic Sans MS" FontSize="20" HorizontalAlignment="Left" Width="147" Margin="135,0,0,0" Content="{Binding UserName}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Grid.Row="1" Foreground="Coral"/>
+            <Image Margin="135,10,334,0" Source="{Binding UserImage}"/>
+            <Label Grid.Column="0" FontFamily="Comic Sans MS" FontSize="35" HorizontalAlignment="Center" Width="244" Content="Statistics" Margin="362,-8,0,64" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Label Grid.Row="1" Grid.Column="0" Content="CATEGORY" FontSize="25" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black" Margin="0,10,0,0" Foreground="Blue" Height="47" VerticalAlignment="Top"/>
+        <Label Grid.Row="1" Grid.Column="1" Content="NO WON GAMES" FontSize="25" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black" Margin="0,10" Foreground="ForestGreen"></Label>
+        <Label Grid.Row="1" Grid.Column="2" Content="NO LOST GAMES" FontSize="25" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black" Margin="0,10" Foreground="Red"></Label>
+        <Label Grid.Row="2" Grid.Column="0" Content="ALL CATEGORIES" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black" Margin="0,3,0,0"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="{Binding WonGamesOnAllCategories}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="2" Grid.Column="2" Content="{Binding LostGamesOnAllCategories}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="3" Grid.Column="0" Content="RIVERS" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="3" Grid.Column="1" Content="{Binding WonGamesOnRivers}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="3" Grid.Column="2" Content="{Binding LostGamesOnRivers}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="4" Grid.Column="0" Content="CARS" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="4" Grid.Column="1" Content="{Binding WonGamesOnCars}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="4" Grid.Column="2" Content="{Binding LostGamesOnCars}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="5" Grid.Column="0" Content="MOVIES" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="5" Grid.Column="1" Content="{Binding WonGamesOnMovies}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="5" Grid.Column="2" Content="{Binding LostGamesOnMovies}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="6" Grid.Column="0" Content="FLOWERS" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="6" Grid.Column="1" Content="{Binding WonGamesOnFlowers}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <Label Grid.Row="6" Grid.Column="2" Content="{Binding LostGamesOnFlowers}" FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Black"></Label>
+        <StackPanel Grid.Row="7" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Label Content="TOTAL WON GAMES: " FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="ForestGreen" FontWeight="Black" Margin="30,0,0,0"></Label>
+            <Label FontSize="20" Content="{Binding TotalWonGames}" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="ForestGreen" Width="100"></Label>
+            <Label Content="TOTAL LOST GAMES: " FontSize="20" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Red" FontWeight="Black" Margin="40,0,0,0"/>
+            <Label FontSize="20" Content="{Binding TotalLostGames}" FontFamily="Comic Sans MS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Red" Width="100"></Label>
+        </StackPanel>
+        <Button Grid.Row="8" HorizontalAlignment="Center" Width="100" Content="Cancel" FontFamily="Comic Sans MS" FontSize="25" Click="CancelClick" Grid.Column="1" Margin="57,15"/>
+    </Grid>
+</Window>
