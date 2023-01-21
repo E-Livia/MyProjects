@@ -1,0 +1,69 @@
+﻿<Window x:Class="Notepad__.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad__"
+        xmlns:viewmodels="clr-namespace:Notepad__.ViewModels"
+        mc:Ignorable="d"
+        Title="WPF Notepad++" Height="800" Width="1000" Icon="notepad_plus_plus_icon2.jpg">
+    <Window.DataContext>
+        <viewmodels:MainViewModel/>
+    </Window.DataContext>
+
+    <DockPanel Margin="1">
+        <Menu DockPanel.Dock="Top" Background="MediumAquamarine" Padding="4">
+            <Menu.Items>
+                <MenuItem Header="File" DataContext="{Binding File}" >
+                    <MenuItem Header="New" Command="{Binding NewCommand}" Background="MediumAquamarine" InputGestureText="Ctrl+N"/>
+                    <MenuItem Header="Open..." Command="{Binding OpenCommand}" Background="MediumAquamarine" InputGestureText="Ctrl+O"/>
+                    <MenuItem Header="Save" Command="{Binding SaveCommand}" CommandParameter="{Binding Document}" Background="MediumAquamarine"
+                              InputGestureText="Ctrl+S"/>
+                    <MenuItem Header="Save as..." Command="{Binding SaveAsCommand}" Background="MediumAquamarine" InputGestureText="Ctrl+Alt+S"/>
+                    <Separator></Separator>
+                    <MenuItem Header="Exit" Command="{Binding ExitCommand}" Background="MediumAquamarine" InputGestureText="Alt+F4"/>
+                </MenuItem>
+                <MenuItem Header="Format" DataContext="{Binding Editor}">
+                    <MenuItem Header="Format" Command="{Binding FormatCommand}" Background="MediumAquamarine"/>
+                </MenuItem>
+                <MenuItem Header="Search" DataContext="{Binding File}">
+                    <MenuItem Header="Find..." Background="MediumAquamarine" Command="{Binding FindCommand}"/>
+                    <MenuItem Header="Replace..." Background="MediumAquamarine" Command="{Binding ReplaceCommand}"/>
+                    <MenuItem Header="Replace all..." Background="MediumAquamarine" Command="{Binding ReplaceAllCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Help" DataContext="{Binding Help}">
+                    <MenuItem Header="About" Command="{Binding HelpCommand}" Background="MediumAquamarine"/>
+                </MenuItem>
+            </Menu.Items>
+        </Menu>
+
+        <TabControl Name="tab" ItemsSource="{Binding File.Tabs}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="{Binding FileName,FallbackValue=FileName.txt, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Name="Close" Content="x" IsCancel="True" Click="Close_Click"></Button>
+                    </DockPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <TextBox Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                             AcceptsReturn="true" 
+                             AcceptsTab="True"
+                             VerticalScrollBarVisibility="Visible"
+                             Background="Azure"
+                             />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </DockPanel>
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Alt" Key="F4" Command="{Binding File.ExitCommand, Mode=OneTime}"/>
+        <KeyBinding Modifiers="Ctrl" Key="N" Command="{Binding File.NewCommand, Mode=OneTime}"/>
+        <KeyBinding Modifiers="Ctrl" Key="S" Command="{Binding File.SaveCommand, Mode=OneTime}"/>
+        <KeyBinding Modifiers="Ctrl" Key="O" Command="{Binding File.OpenCommand, Mode=OneTime}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="S" Command="{Binding File.SaveAsCommand, Mode=OneTime}"/>
+    </Window.InputBindings>
+</Window>
