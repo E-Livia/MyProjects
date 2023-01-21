@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e946026c7e38420e83c39327e5cf9f0d" Name="Diagram1">
+        <EntityTypeShape EntityType="dbPELModel.Groupe" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.GroupeType" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.Note" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.Professor" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.ProfessorSubject" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.Student" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.Subject" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.SubjectType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbPELModel.sysdiagram" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="dbPELModel.FK_Groupe_GroupeType" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_Student_Groupe" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_Note_Professor" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_Note_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_Note_Subject1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_ProfessorSubject_Professor" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_ProfessorSubject_Subject1" ManuallyRouted="false" />
+        <AssociationConnector Association="dbPELModel.FK_Subject_SubjectType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
