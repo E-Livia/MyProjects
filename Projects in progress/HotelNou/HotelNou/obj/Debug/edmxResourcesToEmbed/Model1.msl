@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelTransilvaniaModelStoreContainer" CdmEntityContainer="HotelTransilvaniaEntities">
+    <EntitySetMapping Name="Angajatis">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Angajati">
+        <MappingFragment StoreEntitySet="Angajati">
+          <ScalarProperty Name="id_angajat" ColumnName="id_angajat" />
+          <ScalarProperty Name="nume_angajat" ColumnName="nume_angajat" />
+          <ScalarProperty Name="CNP" ColumnName="CNP" />
+          <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+          <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+          <ScalarProperty Name="data_angajarii" ColumnName="data_angajarii" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientis">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Clienti">
+        <MappingFragment StoreEntitySet="Clienti">
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="nume_client" ColumnName="nume_client" />
+          <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+          <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dotaris">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Dotari">
+        <MappingFragment StoreEntitySet="Dotari">
+          <ScalarProperty Name="id_dotare" ColumnName="id_dotare" />
+          <ScalarProperty Name="denumire" ColumnName="denumire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dotari_Camera">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Dotari_Camera">
+        <MappingFragment StoreEntitySet="Dotari_Camera">
+          <ScalarProperty Name="id_dot_cam" ColumnName="id_dot_cam" />
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+          <ScalarProperty Name="id_dotare" ColumnName="id_dotare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Imaginis">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Imagini">
+        <MappingFragment StoreEntitySet="Imagini">
+          <ScalarProperty Name="id_imagine" ColumnName="id_imagine" />
+          <ScalarProperty Name="img_path" ColumnName="img_path" />
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ofertes">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Oferte">
+        <MappingFragment StoreEntitySet="Oferte">
+          <ScalarProperty Name="id_oferta" ColumnName="id_oferta" />
+          <ScalarProperty Name="data_inceput" ColumnName="data_inceput" />
+          <ScalarProperty Name="data_incheiere" ColumnName="data_incheiere" />
+          <ScalarProperty Name="pret" ColumnName="pret" />
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prets">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Pret">
+        <MappingFragment StoreEntitySet="Pret">
+          <ScalarProperty Name="id_pret" ColumnName="id_pret" />
+          <ScalarProperty Name="valoare" ColumnName="valoare" />
+          <ScalarProperty Name="data_inceput" ColumnName="data_inceput" />
+          <ScalarProperty Name="data_incheiere" ColumnName="data_incheiere" />
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezervares">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Rezervare">
+        <MappingFragment StoreEntitySet="Rezervare">
+          <ScalarProperty Name="id_rezervare" ColumnName="id_rezervare" />
+          <ScalarProperty Name="data_inceput" ColumnName="data_inceput" />
+          <ScalarProperty Name="data_incheiere" ColumnName="data_incheiere" />
+          <ScalarProperty Name="status_rezervare" ColumnName="status_rezervare" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezervare_Camera">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Rezervare_Camera">
+        <MappingFragment StoreEntitySet="Rezervare_Camera">
+          <ScalarProperty Name="id_rez_cam" ColumnName="id_rez_cam" />
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+          <ScalarProperty Name="id_rezervare" ColumnName="id_rezervare" />
+          <ScalarProperty Name="nr_camere" ColumnName="nr_camere" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicii_Suplimentare">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Servicii_Suplimentare">
+        <MappingFragment StoreEntitySet="Servicii_Suplimentare">
+          <ScalarProperty Name="id_serviciu" ColumnName="id_serviciu" />
+          <ScalarProperty Name="denumire_serviciu" ColumnName="denumire_serviciu" />
+          <ScalarProperty Name="pret" ColumnName="pret" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Serviciu_Rezervare">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Serviciu_Rezervare">
+        <MappingFragment StoreEntitySet="Serviciu_Rezervare">
+          <ScalarProperty Name="id_serviciu_rez" ColumnName="id_serviciu_rez" />
+          <ScalarProperty Name="id_serviciu" ColumnName="id_serviciu" />
+          <ScalarProperty Name="id_rezervare" ColumnName="id_rezervare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tip_Camera">
+      <EntityTypeMapping TypeName="HotelTransilvaniaModel.Tip_Camera">
+        <MappingFragment StoreEntitySet="Tip_Camera">
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+          <ScalarProperty Name="tip_camera1" ColumnName="tip_camera" />
+          <ScalarProperty Name="numar_camere" ColumnName="numar_camere" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllEmployees" FunctionName="HotelTransilvaniaModel.Store.GetAllEmployees">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransilvaniaModel.GetAllEmployees_Result">
+          <ScalarProperty Name="id_angajat" ColumnName="id_angajat" />
+          <ScalarProperty Name="nume_angajat" ColumnName="nume_angajat" />
+          <ScalarProperty Name="CNP" ColumnName="CNP" />
+          <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+          <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+          <ScalarProperty Name="data_angajarii" ColumnName="data_angajarii" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddClient" FunctionName="HotelTransilvaniaModel.Store.AddClient" />
+    <FunctionImportMapping FunctionImportName="GetAllCustomers" FunctionName="HotelTransilvaniaModel.Store.GetAllCustomers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransilvaniaModel.GetAllCustomers_Result">
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="nume_client" ColumnName="nume_client" />
+          <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+          <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddRoom" FunctionName="HotelTransilvaniaModel.Store.AddRoom" />
+    <FunctionImportMapping FunctionImportName="GetRoomsWithFeatures" FunctionName="HotelTransilvaniaModel.Store.GetRoomsWithFeatures">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelTransilvaniaModel.GetRoomsWithFeatures_Result">
+          <ScalarProperty Name="tip_camera" ColumnName="tip_camera" />
+          <ScalarProperty Name="denumire" ColumnName="denumire" />
+          <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateRoom" FunctionName="HotelTransilvaniaModel.Store.UpdateRoom" />
+    <FunctionImportMapping FunctionImportName="AddFeature" FunctionName="HotelTransilvaniaModel.Store.AddFeature" />
+  </EntityContainerMapping>
+</Mapping>

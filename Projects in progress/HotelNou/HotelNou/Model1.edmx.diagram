@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f5b302e8e3b547cf9c97f91802e8079e" Name="Diagram1">
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Angajati" Width="1.5" PointX="8.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Clienti" Width="1.5" PointX="1.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Dotari" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Dotari_Camera" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Imagini" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Oferte" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Pret" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Rezervare" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Rezervare_Camera" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Servicii_Suplimentare" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Serviciu_Rezervare" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelTransilvaniaModel.Tip_Camera" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_client" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_dotare" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_camera4" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_camera" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_camera3" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_camera2" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_rez" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_rezervare" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_camera1" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelTransilvaniaModel.fk_serv" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

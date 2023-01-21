@@ -1,0 +1,862 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelTransilvaniaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Angajati">
+          <Key>
+            <PropertyRef Name="id_angajat" />
+          </Key>
+          <Property Name="id_angajat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nume_angajat" Type="varchar" MaxLength="50" />
+          <Property Name="CNP" Type="bigint" />
+          <Property Name="nr_telefon" Type="int" />
+          <Property Name="adresa_email" Type="varchar" MaxLength="50" />
+          <Property Name="data_angajarii" Type="date" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="parola" Type="varchar" MaxLength="50" />
+          <Property Name="rol" Type="bit" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nume_client" Type="varchar" MaxLength="50" />
+          <Property Name="nr_telefon" Type="int" />
+          <Property Name="adresa_email" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="parola" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dotari">
+          <Key>
+            <PropertyRef Name="id_dotare" />
+          </Key>
+          <Property Name="id_dotare" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="denumire" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Dotari_Camera">
+          <Key>
+            <PropertyRef Name="id_dot_cam" />
+          </Key>
+          <Property Name="id_dot_cam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_camera" Type="int" />
+          <Property Name="id_dotare" Type="int" />
+        </EntityType>
+        <EntityType Name="Imagini">
+          <Key>
+            <PropertyRef Name="id_imagine" />
+          </Key>
+          <Property Name="id_imagine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img_path" Type="varchar" MaxLength="100" />
+          <Property Name="id_camera" Type="int" />
+        </EntityType>
+        <EntityType Name="Oferte">
+          <Key>
+            <PropertyRef Name="id_oferta" />
+          </Key>
+          <Property Name="id_oferta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_inceput" Type="date" />
+          <Property Name="data_incheiere" Type="date" />
+          <Property Name="pret" Type="float" />
+          <Property Name="id_camera" Type="int" />
+        </EntityType>
+        <EntityType Name="Pret">
+          <Key>
+            <PropertyRef Name="id_pret" />
+          </Key>
+          <Property Name="id_pret" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="valoare" Type="float" />
+          <Property Name="data_inceput" Type="date" />
+          <Property Name="data_incheiere" Type="date" />
+          <Property Name="id_camera" Type="int" />
+        </EntityType>
+        <EntityType Name="Rezervare">
+          <Key>
+            <PropertyRef Name="id_rezervare" />
+          </Key>
+          <Property Name="id_rezervare" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_inceput" Type="date" />
+          <Property Name="data_incheiere" Type="date" />
+          <Property Name="status_rezervare" Type="varchar" MaxLength="50" />
+          <Property Name="id_client" Type="int" />
+        </EntityType>
+        <EntityType Name="Rezervare_Camera">
+          <Key>
+            <PropertyRef Name="id_rez_cam" />
+          </Key>
+          <Property Name="id_rez_cam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_camera" Type="int" />
+          <Property Name="id_rezervare" Type="int" />
+          <Property Name="nr_camere" Type="int" />
+        </EntityType>
+        <EntityType Name="Servicii_Suplimentare">
+          <Key>
+            <PropertyRef Name="id_serviciu" />
+          </Key>
+          <Property Name="id_serviciu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="denumire_serviciu" Type="varchar" MaxLength="50" />
+          <Property Name="pret" Type="float" />
+        </EntityType>
+        <EntityType Name="Serviciu_Rezervare">
+          <Key>
+            <PropertyRef Name="id_serviciu_rez" />
+          </Key>
+          <Property Name="id_serviciu_rez" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_serviciu" Type="int" />
+          <Property Name="id_rezervare" Type="int" />
+        </EntityType>
+        <EntityType Name="Tip_Camera">
+          <Key>
+            <PropertyRef Name="id_camera" />
+          </Key>
+          <Property Name="id_camera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tip_camera" Type="varchar" MaxLength="50" />
+          <Property Name="numar_camere" Type="int" />
+        </EntityType>
+        <Association Name="fk_camera">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Imagini" Type="Self.Imagini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Imagini">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera1">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Rezervare_Camera" Type="Self.Rezervare_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Rezervare_Camera">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera2">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Pret" Type="Self.Pret" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Pret">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera3">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Oferte" Type="Self.Oferte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Oferte">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera4">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Dotari_Camera" Type="Self.Dotari_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Dotari_Camera">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_client">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="0..1" />
+          <End Role="Rezervare" Type="Self.Rezervare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="Rezervare">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dotare">
+          <End Role="Dotari" Type="Self.Dotari" Multiplicity="0..1" />
+          <End Role="Dotari_Camera" Type="Self.Dotari_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dotari">
+              <PropertyRef Name="id_dotare" />
+            </Principal>
+            <Dependent Role="Dotari_Camera">
+              <PropertyRef Name="id_dotare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rez">
+          <End Role="Rezervare" Type="Self.Rezervare" Multiplicity="0..1" />
+          <End Role="Serviciu_Rezervare" Type="Self.Serviciu_Rezervare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezervare">
+              <PropertyRef Name="id_rezervare" />
+            </Principal>
+            <Dependent Role="Serviciu_Rezervare">
+              <PropertyRef Name="id_rezervare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rezervare">
+          <End Role="Rezervare" Type="Self.Rezervare" Multiplicity="0..1" />
+          <End Role="Rezervare_Camera" Type="Self.Rezervare_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezervare">
+              <PropertyRef Name="id_rezervare" />
+            </Principal>
+            <Dependent Role="Rezervare_Camera">
+              <PropertyRef Name="id_rezervare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_serv">
+          <End Role="Servicii_Suplimentare" Type="Self.Servicii_Suplimentare" Multiplicity="0..1" />
+          <End Role="Serviciu_Rezervare" Type="Self.Serviciu_Rezervare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicii_Suplimentare">
+              <PropertyRef Name="id_serviciu" />
+            </Principal>
+            <Dependent Role="Serviciu_Rezervare">
+              <PropertyRef Name="id_serviciu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nume" Type="varchar" Mode="In" />
+          <Parameter Name="nr_tel" Type="int" Mode="In" />
+          <Parameter Name="email" Type="int" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="parola" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddFeature" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="denumire" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tip" Type="varchar" Mode="In" />
+          <Parameter Name="nr" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetRoomsWithFeatures" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="tip" Type="varchar" Mode="In" />
+          <Parameter Name="nr" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="HotelTransilvaniaModelStoreContainer">
+          <EntitySet Name="Angajati" EntityType="Self.Angajati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clienti" EntityType="Self.Clienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dotari" EntityType="Self.Dotari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dotari_Camera" EntityType="Self.Dotari_Camera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Imagini" EntityType="Self.Imagini" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oferte" EntityType="Self.Oferte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pret" EntityType="Self.Pret" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezervare" EntityType="Self.Rezervare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezervare_Camera" EntityType="Self.Rezervare_Camera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicii_Suplimentare" EntityType="Self.Servicii_Suplimentare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serviciu_Rezervare" EntityType="Self.Serviciu_Rezervare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_Camera" EntityType="Self.Tip_Camera" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_camera" Association="Self.fk_camera">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Imagini" EntitySet="Imagini" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera1" Association="Self.fk_camera1">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Rezervare_Camera" EntitySet="Rezervare_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera2" Association="Self.fk_camera2">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Pret" EntitySet="Pret" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera3" Association="Self.fk_camera3">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Oferte" EntitySet="Oferte" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera4" Association="Self.fk_camera4">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Dotari_Camera" EntitySet="Dotari_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_client" Association="Self.fk_client">
+            <End Role="Clienti" EntitySet="Clienti" />
+            <End Role="Rezervare" EntitySet="Rezervare" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dotare" Association="Self.fk_dotare">
+            <End Role="Dotari" EntitySet="Dotari" />
+            <End Role="Dotari_Camera" EntitySet="Dotari_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rez" Association="Self.fk_rez">
+            <End Role="Rezervare" EntitySet="Rezervare" />
+            <End Role="Serviciu_Rezervare" EntitySet="Serviciu_Rezervare" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rezervare" Association="Self.fk_rezervare">
+            <End Role="Rezervare" EntitySet="Rezervare" />
+            <End Role="Rezervare_Camera" EntitySet="Rezervare_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_serv" Association="Self.fk_serv">
+            <End Role="Servicii_Suplimentare" EntitySet="Servicii_Suplimentare" />
+            <End Role="Serviciu_Rezervare" EntitySet="Serviciu_Rezervare" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelTransilvaniaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Angajati">
+          <Key>
+            <PropertyRef Name="id_angajat" />
+          </Key>
+          <Property Name="id_angajat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nume_angajat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CNP" Type="Int64" />
+          <Property Name="nr_telefon" Type="Int32" />
+          <Property Name="adresa_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data_angajarii" Type="DateTime" Precision="0" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="parola" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Clienti">
+          <Key>
+            <PropertyRef Name="id_client" />
+          </Key>
+          <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nume_client" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nr_telefon" Type="Int32" />
+          <Property Name="adresa_email" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="parola" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rezervares" Relationship="Self.fk_client" FromRole="Clienti" ToRole="Rezervare" />
+        </EntityType>
+        <EntityType Name="Dotari">
+          <Key>
+            <PropertyRef Name="id_dotare" />
+          </Key>
+          <Property Name="id_dotare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="denumire" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dotari_Camera" Relationship="Self.fk_dotare" FromRole="Dotari" ToRole="Dotari_Camera" />
+        </EntityType>
+        <EntityType Name="Dotari_Camera">
+          <Key>
+            <PropertyRef Name="id_dot_cam" />
+          </Key>
+          <Property Name="id_dot_cam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_camera" Type="Int32" />
+          <Property Name="id_dotare" Type="Int32" />
+          <NavigationProperty Name="Dotari" Relationship="Self.fk_dotare" FromRole="Dotari_Camera" ToRole="Dotari" />
+          <NavigationProperty Name="Tip_Camera" Relationship="Self.fk_camera4" FromRole="Dotari_Camera" ToRole="Tip_Camera" />
+        </EntityType>
+        <EntityType Name="Imagini">
+          <Key>
+            <PropertyRef Name="id_imagine" />
+          </Key>
+          <Property Name="id_imagine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_camera" Type="Int32" />
+          <NavigationProperty Name="Tip_Camera" Relationship="Self.fk_camera" FromRole="Imagini" ToRole="Tip_Camera" />
+        </EntityType>
+        <EntityType Name="Oferte">
+          <Key>
+            <PropertyRef Name="id_oferta" />
+          </Key>
+          <Property Name="id_oferta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_inceput" Type="DateTime" Precision="0" />
+          <Property Name="data_incheiere" Type="DateTime" Precision="0" />
+          <Property Name="pret" Type="Double" />
+          <Property Name="id_camera" Type="Int32" />
+          <NavigationProperty Name="Tip_Camera" Relationship="Self.fk_camera3" FromRole="Oferte" ToRole="Tip_Camera" />
+        </EntityType>
+        <EntityType Name="Pret">
+          <Key>
+            <PropertyRef Name="id_pret" />
+          </Key>
+          <Property Name="id_pret" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="valoare" Type="Double" />
+          <Property Name="data_inceput" Type="DateTime" Precision="0" />
+          <Property Name="data_incheiere" Type="DateTime" Precision="0" />
+          <Property Name="id_camera" Type="Int32" />
+          <NavigationProperty Name="Tip_Camera" Relationship="Self.fk_camera2" FromRole="Pret" ToRole="Tip_Camera" />
+        </EntityType>
+        <EntityType Name="Rezervare">
+          <Key>
+            <PropertyRef Name="id_rezervare" />
+          </Key>
+          <Property Name="id_rezervare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_inceput" Type="DateTime" Precision="0" />
+          <Property Name="data_incheiere" Type="DateTime" Precision="0" />
+          <Property Name="status_rezervare" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_client" Type="Int32" />
+          <NavigationProperty Name="Clienti" Relationship="Self.fk_client" FromRole="Rezervare" ToRole="Clienti" />
+          <NavigationProperty Name="Serviciu_Rezervare" Relationship="Self.fk_rez" FromRole="Rezervare" ToRole="Serviciu_Rezervare" />
+          <NavigationProperty Name="Rezervare_Camera" Relationship="Self.fk_rezervare" FromRole="Rezervare" ToRole="Rezervare_Camera" />
+        </EntityType>
+        <EntityType Name="Rezervare_Camera">
+          <Key>
+            <PropertyRef Name="id_rez_cam" />
+          </Key>
+          <Property Name="id_rez_cam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_camera" Type="Int32" />
+          <Property Name="id_rezervare" Type="Int32" />
+          <Property Name="nr_camere" Type="Int32" />
+          <NavigationProperty Name="Rezervare" Relationship="Self.fk_rezervare" FromRole="Rezervare_Camera" ToRole="Rezervare" />
+          <NavigationProperty Name="Tip_Camera" Relationship="Self.fk_camera1" FromRole="Rezervare_Camera" ToRole="Tip_Camera" />
+        </EntityType>
+        <EntityType Name="Servicii_Suplimentare">
+          <Key>
+            <PropertyRef Name="id_serviciu" />
+          </Key>
+          <Property Name="id_serviciu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="denumire_serviciu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pret" Type="Double" />
+          <NavigationProperty Name="Serviciu_Rezervare" Relationship="Self.fk_serv" FromRole="Servicii_Suplimentare" ToRole="Serviciu_Rezervare" />
+        </EntityType>
+        <EntityType Name="Serviciu_Rezervare">
+          <Key>
+            <PropertyRef Name="id_serviciu_rez" />
+          </Key>
+          <Property Name="id_serviciu_rez" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_serviciu" Type="Int32" />
+          <Property Name="id_rezervare" Type="Int32" />
+          <NavigationProperty Name="Rezervare" Relationship="Self.fk_rez" FromRole="Serviciu_Rezervare" ToRole="Rezervare" />
+          <NavigationProperty Name="Servicii_Suplimentare" Relationship="Self.fk_serv" FromRole="Serviciu_Rezervare" ToRole="Servicii_Suplimentare" />
+        </EntityType>
+        <EntityType Name="Tip_Camera">
+          <Key>
+            <PropertyRef Name="id_camera" />
+          </Key>
+          <Property Name="id_camera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tip_camera1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numar_camere" Type="Int32" />
+          <NavigationProperty Name="Dotari_Camera" Relationship="Self.fk_camera4" FromRole="Tip_Camera" ToRole="Dotari_Camera" />
+          <NavigationProperty Name="Imaginis" Relationship="Self.fk_camera" FromRole="Tip_Camera" ToRole="Imagini" />
+          <NavigationProperty Name="Ofertes" Relationship="Self.fk_camera3" FromRole="Tip_Camera" ToRole="Oferte" />
+          <NavigationProperty Name="Prets" Relationship="Self.fk_camera2" FromRole="Tip_Camera" ToRole="Pret" />
+          <NavigationProperty Name="Rezervare_Camera" Relationship="Self.fk_camera1" FromRole="Tip_Camera" ToRole="Rezervare_Camera" />
+        </EntityType>
+        <Association Name="fk_client">
+          <End Role="Clienti" Type="Self.Clienti" Multiplicity="0..1" />
+          <End Role="Rezervare" Type="Self.Rezervare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clienti">
+              <PropertyRef Name="id_client" />
+            </Principal>
+            <Dependent Role="Rezervare">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_dotare">
+          <End Role="Dotari" Type="Self.Dotari" Multiplicity="0..1" />
+          <End Role="Dotari_Camera" Type="Self.Dotari_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dotari">
+              <PropertyRef Name="id_dotare" />
+            </Principal>
+            <Dependent Role="Dotari_Camera">
+              <PropertyRef Name="id_dotare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera4">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Dotari_Camera" Type="Self.Dotari_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Dotari_Camera">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Imagini" Type="Self.Imagini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Imagini">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera3">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Oferte" Type="Self.Oferte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Oferte">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera2">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Pret" Type="Self.Pret" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Pret">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rez">
+          <End Role="Rezervare" Type="Self.Rezervare" Multiplicity="0..1" />
+          <End Role="Serviciu_Rezervare" Type="Self.Serviciu_Rezervare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezervare">
+              <PropertyRef Name="id_rezervare" />
+            </Principal>
+            <Dependent Role="Serviciu_Rezervare">
+              <PropertyRef Name="id_rezervare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rezervare">
+          <End Role="Rezervare" Type="Self.Rezervare" Multiplicity="0..1" />
+          <End Role="Rezervare_Camera" Type="Self.Rezervare_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezervare">
+              <PropertyRef Name="id_rezervare" />
+            </Principal>
+            <Dependent Role="Rezervare_Camera">
+              <PropertyRef Name="id_rezervare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_camera1">
+          <End Role="Tip_Camera" Type="Self.Tip_Camera" Multiplicity="0..1" />
+          <End Role="Rezervare_Camera" Type="Self.Rezervare_Camera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_Camera">
+              <PropertyRef Name="id_camera" />
+            </Principal>
+            <Dependent Role="Rezervare_Camera">
+              <PropertyRef Name="id_camera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_serv">
+          <End Role="Servicii_Suplimentare" Type="Self.Servicii_Suplimentare" Multiplicity="0..1" />
+          <End Role="Serviciu_Rezervare" Type="Self.Serviciu_Rezervare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicii_Suplimentare">
+              <PropertyRef Name="id_serviciu" />
+            </Principal>
+            <Dependent Role="Serviciu_Rezervare">
+              <PropertyRef Name="id_serviciu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelTransilvaniaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Angajatis" EntityType="Self.Angajati" />
+          <EntitySet Name="Clientis" EntityType="Self.Clienti" />
+          <EntitySet Name="Dotaris" EntityType="Self.Dotari" />
+          <EntitySet Name="Dotari_Camera" EntityType="Self.Dotari_Camera" />
+          <EntitySet Name="Imaginis" EntityType="Self.Imagini" />
+          <EntitySet Name="Ofertes" EntityType="Self.Oferte" />
+          <EntitySet Name="Prets" EntityType="Self.Pret" />
+          <EntitySet Name="Rezervares" EntityType="Self.Rezervare" />
+          <EntitySet Name="Rezervare_Camera" EntityType="Self.Rezervare_Camera" />
+          <EntitySet Name="Servicii_Suplimentare" EntityType="Self.Servicii_Suplimentare" />
+          <EntitySet Name="Serviciu_Rezervare" EntityType="Self.Serviciu_Rezervare" />
+          <EntitySet Name="Tip_Camera" EntityType="Self.Tip_Camera" />
+          <AssociationSet Name="fk_client" Association="Self.fk_client">
+            <End Role="Clienti" EntitySet="Clientis" />
+            <End Role="Rezervare" EntitySet="Rezervares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_dotare" Association="Self.fk_dotare">
+            <End Role="Dotari" EntitySet="Dotaris" />
+            <End Role="Dotari_Camera" EntitySet="Dotari_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera4" Association="Self.fk_camera4">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Dotari_Camera" EntitySet="Dotari_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera" Association="Self.fk_camera">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Imagini" EntitySet="Imaginis" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera3" Association="Self.fk_camera3">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Oferte" EntitySet="Ofertes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera2" Association="Self.fk_camera2">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Pret" EntitySet="Prets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rez" Association="Self.fk_rez">
+            <End Role="Rezervare" EntitySet="Rezervares" />
+            <End Role="Serviciu_Rezervare" EntitySet="Serviciu_Rezervare" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rezervare" Association="Self.fk_rezervare">
+            <End Role="Rezervare" EntitySet="Rezervares" />
+            <End Role="Rezervare_Camera" EntitySet="Rezervare_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_camera1" Association="Self.fk_camera1">
+            <End Role="Tip_Camera" EntitySet="Tip_Camera" />
+            <End Role="Rezervare_Camera" EntitySet="Rezervare_Camera" />
+          </AssociationSet>
+          <AssociationSet Name="fk_serv" Association="Self.fk_serv">
+            <End Role="Servicii_Suplimentare" EntitySet="Servicii_Suplimentare" />
+            <End Role="Serviciu_Rezervare" EntitySet="Serviciu_Rezervare" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllEmployees" ReturnType="Collection(HotelTransilvaniaModel.GetAllEmployees_Result)" />
+          <FunctionImport Name="AddClient">
+            <Parameter Name="nume" Mode="In" Type="String" />
+            <Parameter Name="nr_tel" Mode="In" Type="Int32" />
+            <Parameter Name="email" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="parola" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllCustomers" ReturnType="Collection(HotelTransilvaniaModel.GetAllCustomers_Result)" />
+          <FunctionImport Name="AddRoom">
+            <Parameter Name="tip" Mode="In" Type="String" />
+            <Parameter Name="nr" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRoomsWithFeatures" ReturnType="Collection(HotelTransilvaniaModel.GetRoomsWithFeatures_Result)" />
+          <FunctionImport Name="UpdateRoom">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="tip" Mode="In" Type="String" />
+            <Parameter Name="nr" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddFeature">
+            <Parameter Name="denumire" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllEmployees_Result">
+          <Property Type="Int32" Name="id_angajat" Nullable="false" />
+          <Property Type="String" Name="nume_angajat" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="CNP" Nullable="true" />
+          <Property Type="Int32" Name="nr_telefon" Nullable="true" />
+          <Property Type="String" Name="adresa_email" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="data_angajarii" Nullable="true" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="parola" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="rol" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllCustomers_Result">
+          <Property Type="Int32" Name="id_client" Nullable="false" />
+          <Property Type="String" Name="nume_client" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="nr_telefon" Nullable="true" />
+          <Property Type="Int32" Name="adresa_email" Nullable="true" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="parola" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetRoomsWithFeatures_Result">
+          <Property Type="String" Name="tip_camera" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="denumire" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="id_camera" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelTransilvaniaModelStoreContainer" CdmEntityContainer="HotelTransilvaniaEntities">
+          <EntitySetMapping Name="Angajatis">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Angajati">
+              <MappingFragment StoreEntitySet="Angajati">
+                <ScalarProperty Name="id_angajat" ColumnName="id_angajat" />
+                <ScalarProperty Name="nume_angajat" ColumnName="nume_angajat" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+                <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+                <ScalarProperty Name="data_angajarii" ColumnName="data_angajarii" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="parola" ColumnName="parola" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientis">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Clienti">
+              <MappingFragment StoreEntitySet="Clienti">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="nume_client" ColumnName="nume_client" />
+                <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+                <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="parola" ColumnName="parola" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dotaris">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Dotari">
+              <MappingFragment StoreEntitySet="Dotari">
+                <ScalarProperty Name="id_dotare" ColumnName="id_dotare" />
+                <ScalarProperty Name="denumire" ColumnName="denumire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dotari_Camera">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Dotari_Camera">
+              <MappingFragment StoreEntitySet="Dotari_Camera">
+                <ScalarProperty Name="id_dot_cam" ColumnName="id_dot_cam" />
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+                <ScalarProperty Name="id_dotare" ColumnName="id_dotare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imaginis">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Imagini">
+              <MappingFragment StoreEntitySet="Imagini">
+                <ScalarProperty Name="id_imagine" ColumnName="id_imagine" />
+                <ScalarProperty Name="img_path" ColumnName="img_path" />
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ofertes">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Oferte">
+              <MappingFragment StoreEntitySet="Oferte">
+                <ScalarProperty Name="id_oferta" ColumnName="id_oferta" />
+                <ScalarProperty Name="data_inceput" ColumnName="data_inceput" />
+                <ScalarProperty Name="data_incheiere" ColumnName="data_incheiere" />
+                <ScalarProperty Name="pret" ColumnName="pret" />
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prets">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Pret">
+              <MappingFragment StoreEntitySet="Pret">
+                <ScalarProperty Name="id_pret" ColumnName="id_pret" />
+                <ScalarProperty Name="valoare" ColumnName="valoare" />
+                <ScalarProperty Name="data_inceput" ColumnName="data_inceput" />
+                <ScalarProperty Name="data_incheiere" ColumnName="data_incheiere" />
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezervares">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Rezervare">
+              <MappingFragment StoreEntitySet="Rezervare">
+                <ScalarProperty Name="id_rezervare" ColumnName="id_rezervare" />
+                <ScalarProperty Name="data_inceput" ColumnName="data_inceput" />
+                <ScalarProperty Name="data_incheiere" ColumnName="data_incheiere" />
+                <ScalarProperty Name="status_rezervare" ColumnName="status_rezervare" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezervare_Camera">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Rezervare_Camera">
+              <MappingFragment StoreEntitySet="Rezervare_Camera">
+                <ScalarProperty Name="id_rez_cam" ColumnName="id_rez_cam" />
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+                <ScalarProperty Name="id_rezervare" ColumnName="id_rezervare" />
+                <ScalarProperty Name="nr_camere" ColumnName="nr_camere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicii_Suplimentare">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Servicii_Suplimentare">
+              <MappingFragment StoreEntitySet="Servicii_Suplimentare">
+                <ScalarProperty Name="id_serviciu" ColumnName="id_serviciu" />
+                <ScalarProperty Name="denumire_serviciu" ColumnName="denumire_serviciu" />
+                <ScalarProperty Name="pret" ColumnName="pret" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serviciu_Rezervare">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Serviciu_Rezervare">
+              <MappingFragment StoreEntitySet="Serviciu_Rezervare">
+                <ScalarProperty Name="id_serviciu_rez" ColumnName="id_serviciu_rez" />
+                <ScalarProperty Name="id_serviciu" ColumnName="id_serviciu" />
+                <ScalarProperty Name="id_rezervare" ColumnName="id_rezervare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_Camera">
+            <EntityTypeMapping TypeName="HotelTransilvaniaModel.Tip_Camera">
+              <MappingFragment StoreEntitySet="Tip_Camera">
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+                <ScalarProperty Name="tip_camera1" ColumnName="tip_camera" />
+                <ScalarProperty Name="numar_camere" ColumnName="numar_camere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllEmployees" FunctionName="HotelTransilvaniaModel.Store.GetAllEmployees">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HotelTransilvaniaModel.GetAllEmployees_Result">
+                <ScalarProperty Name="id_angajat" ColumnName="id_angajat" />
+                <ScalarProperty Name="nume_angajat" ColumnName="nume_angajat" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+                <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+                <ScalarProperty Name="data_angajarii" ColumnName="data_angajarii" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="parola" ColumnName="parola" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddClient" FunctionName="HotelTransilvaniaModel.Store.AddClient" />
+          <FunctionImportMapping FunctionImportName="GetAllCustomers" FunctionName="HotelTransilvaniaModel.Store.GetAllCustomers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HotelTransilvaniaModel.GetAllCustomers_Result">
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="nume_client" ColumnName="nume_client" />
+                <ScalarProperty Name="nr_telefon" ColumnName="nr_telefon" />
+                <ScalarProperty Name="adresa_email" ColumnName="adresa_email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="parola" ColumnName="parola" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddRoom" FunctionName="HotelTransilvaniaModel.Store.AddRoom" />
+          <FunctionImportMapping FunctionImportName="GetRoomsWithFeatures" FunctionName="HotelTransilvaniaModel.Store.GetRoomsWithFeatures">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HotelTransilvaniaModel.GetRoomsWithFeatures_Result">
+                <ScalarProperty Name="tip_camera" ColumnName="tip_camera" />
+                <ScalarProperty Name="denumire" ColumnName="denumire" />
+                <ScalarProperty Name="id_camera" ColumnName="id_camera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateRoom" FunctionName="HotelTransilvaniaModel.Store.UpdateRoom" />
+          <FunctionImportMapping FunctionImportName="AddFeature" FunctionName="HotelTransilvaniaModel.Store.AddFeature" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
