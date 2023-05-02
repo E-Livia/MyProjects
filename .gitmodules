@@ -1,3 +1,6 @@
 [submodule "Finished projects/RomaniaTravelAppAndroid"]
 	path = Finished projects/RomaniaTravelAppAndroid
 	url = ../RomaniaTravelAppAndroid.git
+[submodule "Finished projects/ClockAnimationAndroid"]
+	path = Finished projects/ClockAnimationAndroid
+	url = ../ClockAnimationAndroid.git
